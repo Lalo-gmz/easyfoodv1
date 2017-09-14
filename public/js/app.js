@@ -22414,6 +22414,8 @@ new Vue({
     },
 
     methods: {
+     // ---------- IMPRIME TABLA -------------------
+
       getKeeps: function() {
         var url = this.base;
           axios.get(url).then(response => {
@@ -22439,6 +22441,14 @@ new Vue({
         });
       },
 
+      deleteReceta: function(keep){
+        var url = this.base + keep.idreceta;
+        axios.delete(url).then(response => {
+            this.getKeeps();
+              toastr.success('Eliminado correctamente');
+        });
+      },
+
       //--------------METODOS CREAR NUEVO ---------------------
 
       createMedida: function() {
@@ -22458,6 +22468,22 @@ new Vue({
       },
 
       createCategoria: function() {
+        var url = this.base;
+          axios.post(url, {
+            nombre: this.nombre,
+            descripcion: this.descripcion,
+            condicion: 1
+          }).then(response => {
+              this.getKeeps();
+              this.cleanForm();
+              $('#create').modal('hide');
+              toastr.success('Guardado correctamente');
+          }).catch(error => {
+              this.errors = error.response.data
+          });
+      },
+
+      createReceta: function() {
         var url = this.base;
           axios.post(url, {
             nombre: this.nombre,
@@ -22507,6 +22533,22 @@ new Vue({
 
       },
 
+      updateReceta: function() {
+        var url = this.base + this.id;
+          axios.patch(url, {
+            nombre: this.nombre,
+            descripcion: this.descripcion
+          }).then(response => {
+              this.getKeeps();
+              this.cleanForm();
+              $('#update').modal('hide');
+              toastr.success('Editado correctamente');
+          }).catch(error => {
+              this.errors = error.response.data
+          });
+
+      },
+
    // ------------- BUSCAR ----------------
       search: function(){
         var url = this.base + this.searchText;
@@ -22528,6 +22570,14 @@ new Vue({
       getValCategoria: function(keep) {
         this.errors = [];
         this.id = keep.idcategoria;
+        this.nombre = keep.nombre;
+        this.descripcion = keep.descripcion;
+
+      },
+
+      getValReceta: function(keep) {
+        this.errors = [];
+        this.id = keep.idreceta;
         this.nombre = keep.nombre;
         this.descripcion = keep.descripcion;
 

@@ -15,12 +15,8 @@ class RecetaController extends Controller
   }
   public function index()
   {
-
       $tasks = Receta::where('condicion','=','1')->orderBy('idreceta', 'DESC')->get();
       return $tasks;
-
-
-
   }
 
   public function store(Request $request)
@@ -58,6 +54,5 @@ class RecetaController extends Controller
     $categoria=Receta::findOrFail($id);
     $categoria->condicion='0';
     $categoria->save();
-
   }
 }

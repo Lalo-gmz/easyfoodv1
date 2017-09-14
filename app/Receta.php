@@ -14,7 +14,8 @@ class Receta extends Model
 
   protected $fillable = [
     'nombre',
-    'descripcion'
+    'descripcion',
+    'condicion'
 
   ];
 }

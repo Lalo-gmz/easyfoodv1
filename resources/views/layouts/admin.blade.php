@@ -68,6 +68,7 @@
                       <li><a href="medida">Medidas</a></li>
                       <li><a href="typography.html">Menú</a></li>
                       <li><a href="icons.html">Ingredientes</a></li>
+                      <li><a href="receta">Recetas</a></li>
 
 
                     </ul>
