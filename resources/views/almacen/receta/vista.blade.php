@@ -48,6 +48,7 @@
 
             @include('almacen/receta/modal')
             @include('almacen/receta/modalE')
+            @include('almacen/receta/modalM')
         </div> <!-- fin contenido de Tabla -->
           <div class="row">
             <!-- Posible paginación -->
